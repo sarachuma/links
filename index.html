@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Для Чатика</title>
     
-    <!-- Подключаем Google Fonts как запасной вариант (fallback) -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geologica:wght@400;600;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* ПОДКЛЮЧЕНИЕ ЛОКАЛЬНЫХ ШРИФТОВ ИЗ ПАПКИ FONTS */
+        
         @font-face {
             font-family: 'BOU COLLEGIATE RUS';
             src: url('fonts/Bou_Collegiate.ttf') format('truetype');
@@ -27,12 +27,12 @@
         }
 
         :root {
-            /* Синие оттенки для фона */
+            
             --bg-deep: #030624;         
             --bg-velvet: #0C1E5B;       
             --bg-sunset: #002daa;       
             
-            /* Красные оттенки для акцентов */
+            
             --accent-light: #ff4d4d;      
             --accent-main: #fe0000;       
             --accent-dark: #741511;       
@@ -43,14 +43,14 @@
             --text-main: #f0edf5;       
             --text-muted: #8b9dc3;      
             
-            /* Шрифтовая пара */
+            
             --font-title: 'Geologica Local', 'Geologica', sans-serif;
             --font-text: 'Geologica Local', 'Geologica', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* Эффект зернистости на весь сайт */
+        
         body::before {
             content: "";
             position: fixed;
@@ -77,7 +77,7 @@
             padding: 40px 20px;
         }
 
-        /* --- ПАНЕЛЬ СОЦИАЛЬНЫХ СЕТЕЙ (3D КНОПКИ) --- */
+        
         .social-panel {
             display: flex;
             justify-content: center;
@@ -107,7 +107,7 @@
             box-shadow: 4px 4px 0px var(--accent-dark), 0 10px 25px rgba(0,0,0,0.8);
         }
 
-        /* Широкая кнопка специально для текстового логотипа Boosty */
+        
         .social-btn.boosty-btn {
             width: auto;
             padding: 0 22px;
@@ -124,7 +124,7 @@
             transition: all 0.2s ease;
         }
 
-        /* Текстовый логотип Boosty с 3D тенью */
+        
         .boosty-text {
             font-family: 'Arial Black', var(--font-title);
             font-weight: 900;
@@ -160,7 +160,7 @@
             box-shadow: 0px 0px 0px var(--accent-dark), 0 0 10px rgba(254, 0, 0, 0.6);
         }
 
-        /* --- ШАПКА "ДЛЯ ЧАТИКА" --- */
+        
         .portal-header {
             text-align: center;
             margin-bottom: 30px;
@@ -451,7 +451,7 @@
 
     </div>
 	
-	<!-- ПАНЕЛЬ 3D-КНОПОК СОЦСЕТЕЙ С ТЕКСТОВЫМ BOOSTY -->
+	
     <div class="social-panel">
         <a href="https://t.me/sarachuma" target="_blank" class="social-btn" title="Telegram">
             <svg viewBox="0 0 24 24"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" fill="currentColor"/></svg>
