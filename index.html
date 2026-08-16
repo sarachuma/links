@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книга Заклинаний | Инструкция</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geologica:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ПОДКЛЮЧЕНИЕ ЛОКАЛЬНЫХ ШРИФТОВ */
+        @font-face {
+            font-family: 'BOU COLLEGIATE RUS';
+            src: url('fonts/Bou_Collegiate.ttf') format('truetype');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Geologica Local';
+            src: url('fonts/Geologica.ttf') format('truetype');
+            font-weight: 100 900; font-style: normal; font-display: swap;
+        }
+
+        :root {
+            /* Синие оттенки (фон) */
+            --bg-deep: #030624;         
+            --bg-velvet: #0C1E5B;       
+            --bg-sunset: #002daa;       
+            
+            /* Красные акценты */
+            --accent-light: #ff4d4d;      
+            --accent-main: #fe0000;       
+            --accent-dark: #741511;       
+            
+            --warm-star: #fce8a1;       
+            --cute-pink: #ff8fa3;       
+            
+            --text-main: #f0edf5;       
+            --text-muted: #8b9dc3;      
+            
+            --font-title: 'Geologica Local', 'Geologica', sans-serif;
+            --font-text: 'Geologica Local', 'Geologica', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Эффект зернистости (film grain) */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            opacity: 0.8;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            background-image: url('background6.webp'); /* Единый фон экосистемы */
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-text);
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center;
+            padding: 50px 20px; overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%; max-width: 1000px;
+            background: rgba(3, 6, 36, 0.88); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 40px rgba(254, 0, 0, 0.15); 
+            border: 2px solid var(--accent-dark); 
+            border-radius: 2px; /* Острые углы */
+            padding: 6px; 
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .container::before {
+            content: ''; position: absolute;
+            top: 6px; left: 6px; right: 6px; bottom: 6px;
+            border: 1px dashed rgba(254, 0, 0, 0.3);
+            border-radius: 2px;
+            pointer-events: none; z-index: 10;
+        }
+
+        .content-wrapper { 
+            background: rgba(12, 30, 91, 0.4); 
+            position: relative; z-index: 2; 
+            border-radius: 2px; padding: 40px 40px;
+        }
+
+        /* --- ЗАГОЛОВОК И КНОПКА ВОЗВРАТА --- */
+        .header-title {
+            text-align: center; margin-bottom: 50px;
+            position: relative;
+            border-bottom: 2px solid rgba(254, 0, 0, 0.3); 
+            padding-bottom: 30px;
+            background: radial-gradient(circle at 50% 0%, rgba(254, 0, 0, 0.15) 0%, transparent 80%);
+        }
+        
+        .header-title::after {
+            content: '✦'; position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%);
+            color: var(--accent-main); font-size: 20px; background: var(--bg-deep); padding: 0 15px;
+            border: 1px solid rgba(254, 0, 0, 0.4); text-shadow: 0 0 10px var(--accent-main);
+        }
+
+        .header-title h1 {
+            font-family: var(--font-title); font-size: 52px; font-weight: 900;
+            color: #ffffff; text-transform: uppercase; letter-spacing: 3px;
+            text-shadow: -3px 0 var(--bg-sunset), 3px 0 var(--accent-main), 0 0 20px rgba(254, 0, 0, 0.5); 
+            margin-bottom: 10px;
+        }
+        .header-title h1::before, .header-title h1::after {
+            content: '♦'; display: inline-block; font-size: 26px; vertical-align: middle; margin: 0 15px;
+            color: var(--accent-main); filter: drop-shadow(0 0 8px rgba(254, 0, 0, 0.6)); 
+        }
+
+        .header-title p {
+            font-size: 20px; color: #ffffff; font-weight: 700;
+            letter-spacing: 1px; font-family: var(--font-title);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
+        }
+
+        /* Кнопка "В Архивы" 3D */
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(3, 6, 36, 0.85); 
+            color: #ffffff; text-decoration: none; padding: 12px 30px;
+            border-radius: 2px; border: 2px solid var(--accent-main);
+            font-family: var(--font-title); font-weight: 900; font-size: 18px; text-transform: uppercase; letter-spacing: 2px;
+            transition: all 0.2s ease; margin-bottom: 35px;
+            
+            box-shadow: 4px 4px 0px var(--accent-dark), 0 10px 25px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 0px var(--accent-dark), 0 0 10px rgba(254, 0, 0, 0.8);
+        }
+        .back-btn svg { filter: drop-shadow(2px 2px 0px var(--accent-dark)) drop-shadow(0 0 10px rgba(254, 0, 0, 0.8)); transition: all 0.2s ease; }
+
+        .back-btn:hover {
+            background: var(--accent-main); color: #ffffff; border-color: var(--accent-main);
+            text-shadow: none; transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--accent-dark), 0 0 20px rgba(254, 0, 0, 0.6);
+        }
+        .back-btn:hover svg { filter: none; }
+        .back-btn:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px var(--accent-dark), 0 0 10px rgba(254, 0, 0, 0.6); }
+
+
+        /* --- КОНТЕНТ БЛОКИ --- */
+        .section { margin-bottom: 30px; }
+
+        /* ОБНОВЛЕННЫЙ ЗАГОЛОВОК СЕКЦИИ (3D, ПО ЦЕНТРУ, БЕЗ КОРОНЫ) */
+        .section-title {
+            font-family: var(--font-title); font-size: 30px; font-weight: 900;
+            color: #ffffff; margin: 0 auto 35px auto; padding: 12px 40px;
+            background: rgba(3, 6, 36, 0.85);
+            border: 2px solid var(--accent-main); border-radius: 2px;
+            text-align: center; width: fit-content; display: block;
+            text-shadow: 2px 2px 0px var(--accent-dark), 0 0 15px rgba(254, 0, 0, 0.8); 
+            box-shadow: 4px 4px 0px var(--accent-dark), 0 10px 25px rgba(0,0,0,0.8);
+            letter-spacing: 2px; text-transform: uppercase;
+        }
+
+        .info-box {
+            background: rgba(12, 30, 91, 0.6); border: 1px solid rgba(254, 0, 0, 0.3);
+            color: var(--text-main); padding: 15px 25px; border-radius: 2px;
+            margin-bottom: 30px; font-size: 16px; font-weight: 700; line-height: 1.5;
+            display: flex; gap: 15px; align-items: center; letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .info-box code { background: rgba(254, 0, 0, 0.15); border: 1px solid var(--accent-main); color: #fff; padding: 2px 6px; border-radius: 2px; font-family: monospace; font-size: 16px; font-weight: 900; }
+
+        .command-grid { display: grid; grid-template-columns: 1fr; gap: 25px; }
+        @media (min-width: 768px) { .command-grid.two-cols { grid-template-columns: repeat(2, 1fr); } }
+
+        /* --- 3D КАРТОЧКИ КОМАНД --- */
+        .command-card {
+            background: var(--bg-velvet);
+            border: 2px solid var(--accent-dark); border-radius: 2px; padding: 25px;
+            transition: all 0.3s ease; position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8), 6px 6px 0px rgba(0,0,0,0.5); /* 3D Тень */
+        }
+
+        .command-card::before {
+            content: ''; position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px solid rgba(254, 0, 0, 0.15); border-radius: 2px; pointer-events: none; z-index: 1; transition: all 0.3s ease;
+        }
+
+        .command-card:hover {
+            border-color: var(--accent-main); transform: translate(-3px, -3px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.9), 9px 9px 0px rgba(254, 0, 0, 0.3), 0 0 25px rgba(254, 0, 0, 0.2);
+        }
+        .command-card:hover::before { border-color: rgba(254, 0, 0, 0.4); }
+
+        .cmd-name {
+            font-family: var(--font-title); font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 12px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.9); letter-spacing: 1px; position: relative; z-index: 2;
+        }
+
+        .cmd-syntax {
+            background: var(--bg-deep); color: #fff; padding: 12px 18px; border-radius: 2px;
+            font-family: monospace; font-size: 16px; font-weight: 700; margin-bottom: 15px;
+            border-left: 4px solid var(--accent-main); word-wrap: break-word; position: relative; z-index: 2;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+        }
+
+        .cmd-desc { font-size: 16px; line-height: 1.6; color: #dbe4f9; font-weight: 600; position: relative; z-index: 2; }
+        .cmd-desc i { color: var(--text-muted); font-size: 14px; font-style: normal; font-weight: 400; display: block; margin-top: 6px;}
+        .cmd-desc b { color: #fff; font-weight: 900; }
+        .cmd-desc code { background: rgba(3, 6, 36, 0.8); border: 1px solid rgba(254, 0, 0, 0.4); padding: 2px 5px; border-radius: 2px; font-family: monospace; color: var(--accent-light); font-size: 14px; }
+
+        /* Аргументы команд */
+        .arg-nick { color: var(--warm-star); font-weight: 900; } 
+        .arg-text { color: #fff; font-weight: 900; } 
+        .arg-mod { color: var(--accent-light); font-weight: 900; } 
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 900px) {
+            .header-title h1 { font-size: 38px; }
+            .header-title h1::before, .header-title h1::after { display: none; }
+            .content-wrapper { padding: 20px 15px; }
+            .command-card { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="content-wrapper">
+            
+            <div class="header-title">
+                <a href="https://cherteya.github.io/lists/" class="back-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    В портал
+                </a>
+
+                <h1>Книга Заклинаний</h1>
+                <p>Руководство по управлению Архивами</p>
+            </div>
+
+            <div class="section">
+                <!-- Обновленный заголовок: без короны, по центру, в 3D -->
+                <h2 class="section-title">Для Стримера и Модераторов</h2>
+                
+                <div class="info-box">
+                    <div>Главная команда в примерах: <code>!заказ</code> (подставьте свою из Streamer.bot: !filmzakaz, !fz, !gamezakaz, !gz и т.д.).</div>
+                </div>
+
+                <div class="command-grid two-cols">
+                    
+                    <div class="command-card">
+                        <div class="cmd-name">Ручное добавление (Без баллов)</div>
+                        <div class="cmd-syntax">!заказ <span class="arg-nick">@ник</span> <span class="arg-text">Название</span> <span class="arg-mod">(add)</span></div>
+                        <div class="cmd-desc">
+                            Добавляет заказ в очередь от имени указанного зрителя. 
+                            <i>Алиасы: (заказ), (order), (add)</i>
+                        </div>
+                    </div>
+
+                    <div class="command-card">
+                        <div class="cmd-name">Победа на аукционе</div>
+                        <div class="cmd-syntax">!заказ <span class="arg-nick">@ник</span> <span class="arg-text">Название</span> <span class="arg-mod">(аукцион)</span></div>
+                        <div class="cmd-desc">
+                            Добавляет заказ со статусом <b>✦ Аукцион ✦</b>.
+                            <i>Алиасы: (аукцион), (auction), (аук)</i>
+                        </div>
+                    </div>
+
+                    <div class="command-card">
+                        <div class="cmd-name">Пройдено / Смотрели с оценкой</div>
+                        <div class="cmd-syntax">!заказ <span class="arg-text">Название</span> <span class="arg-mod">(8.5)</span></div>
+                        <div class="cmd-desc">
+                            Закрывает заказ и выставляет вашу оценку (от <b>0</b> до <b>10</b>).
+          
+                        </div>
+                    </div>
+
+                    <div class="command-card">
+                        <div class="cmd-name">Пройдено / Смотрели (Без оценки)</div>
+                        <div class="cmd-syntax">!заказ <span class="arg-text">Название</span> <span class="arg-mod">(смотрели/прошли)</span></div>
+                        <div class="cmd-desc">
+                            Переводит из очереди в «Смотрели/Пройдено».
+                            <br><span style="color: var(--accent-light); font-size: 14px; font-weight: 700; margin-top: 4px; display: block;">⚠️ Повторный ввод вернет статус «В очереди»!</span>
+                            <i>Алиасы: (смотрели), (посмотрели), (watched)</i>
+                            <i>Алиасы: (пройдено), (complete), (прошли)</i>
+                        </div>
+                    </div>
+
+                    <div class="command-card">
+                        <div class="cmd-name">Добавить метку «Слёзы»</div>
+                        <div class="cmd-syntax">!заказ <span class="arg-text">Название</span> <span class="arg-mod">(слёзы)</span></div>
+                        <div class="cmd-desc">
+                            Добавляет метку 💧 для эмоциональных игр/фильмов. (Только для просмотренных/пройденных).
+                            <i>Алиасы: (слёзы), (плакал), (cry)</i>
+                            <br>Можно комбинировать: <code>(8.5) (слезы)</code>
+                        </div>
+                    </div>
+
+                    <div class="command-card">
+                        <div class="cmd-name">Удаление из базы</div>
+                        <div class="cmd-syntax">!заказ <span class="arg-text">Название</span> <span class="arg-mod">(удалить)</span></div>
+                        <div class="cmd-desc">
+                            Полностью стирает заказ зрителя из базы.
+                            <i>Алиасы: (удалить), (delete), (del), (убрать)</i>
+                            <br>Удаление по нику+ID: <code>!заказ @ник 12 (удалить)</code>
+                        </div>
+                    </div>
+
+                    <div class="command-card">
+                        <div class="cmd-name">Замена заказа</div>
+                        <div class="cmd-syntax">!заказ <span class="arg-text">Старое</span> <span class="arg-mod">[Новое]</span></div>
+                        <div class="cmd-desc">
+                            Заменяет текущий заказ на другой. Новое название нужно писать строго в квадратных <b>[ ]</b> или фигурных <b>{ }</b> скобках.
+                            <br>Пример: <code>!заказ Начало [Шрек 2]</code>
+                        </div>
+                    </div>
+
+                    <div class="command-card">
+                        <div class="cmd-name">Принудительное обновление</div>
+                        <div class="cmd-syntax">!заказ <span class="arg-mod">(обновить)</span></div>
+                        <div class="cmd-desc">
+                            Если сайт не обновился автоматически, эта команда заставит бота отправить базу данных еще раз.
+                            <i>Алиасы: (обновить), (update), (refresh)</i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
