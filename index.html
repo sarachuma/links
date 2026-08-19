@@ -408,6 +408,32 @@
             .portal-card { width: 100%; max-width: 420px; }
             .cards-wrapper { flex-direction: column; gap: 30px; }
         }
+		
+		@media (max-width: 768px) {
+			/* Уменьшаем основной текст заголовка */
+			.portal-header h1 { 
+				font-size: 24px; 
+			}
+    
+			/* Уменьшаем ромбики по бокам, чтобы они были пропорциональны тексту */
+			.portal-header h1::before, 
+			.portal-header h1::after { 
+				font-size: 20px;
+				margin: 0 8px; /* Чуть сдвигаем их ближе к тексту */
+			}
+    
+			/* Немного уменьшаем подзаголовок */
+			.portal-header p { 
+				font-size: 16px; 
+			}
+    
+			/* Делаем саму плашку с текстом чуть компактнее */
+			.portal-header { 
+				padding: 15px 20px; 
+			}
+		}
+		
+		
     </style>
 </head>
 <body>
